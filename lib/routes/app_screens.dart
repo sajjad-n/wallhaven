@@ -14,6 +14,7 @@ abstract class AppScreens {
     GetPage(
       name: AppRoutes.home,
       page: () => const HomeScreen(),
+      binding: HomeBinding(),
     ),
   ];
 

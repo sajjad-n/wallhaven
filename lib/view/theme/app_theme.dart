@@ -79,6 +79,12 @@ abstract class AppTheme {
           color: Colors.white,
         ),
       ),
+      appBarTheme: const AppBarTheme(
+        color: Colors.transparent,
+      ),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: Colors.white,
+      ),
     );
   }
 }
