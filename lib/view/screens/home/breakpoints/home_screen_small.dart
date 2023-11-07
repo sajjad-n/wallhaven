@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/controllers.dart';
+import '../../../../helper/constants/constants.dart';
 import '../../../../helper/utils/utils.dart';
 import '../../../../translations/translations.dart';
 import '../../../widgets/widgets.dart';
+import '../home.dart';
 
 class HomeScreenSmall extends StatelessWidget {
   const HomeScreenSmall({super.key});
@@ -32,18 +34,17 @@ class HomeScreenSmall extends StatelessWidget {
                     )
                   : Column(
                       children: [
-                        ListView.separated(
-                          shrinkWrap: true,
-                          itemCount: _.wallpapers.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              height: 20,
-                              color: Colors.red,
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return const SizedBox(height: 1,);
-                          },
+                        Expanded(
+                          child: ListView.separated(
+                            itemCount: _.wallpapers.length,
+                            itemBuilder: (context, index) =>
+                                WallpaperItemWidget(
+                              wallpaper: _.wallpapers[index],
+                              thumbnailType: ThumbnailTypes.small,
+                            ),
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(height: 1),
+                          ),
                         ),
                       ],
                     );
