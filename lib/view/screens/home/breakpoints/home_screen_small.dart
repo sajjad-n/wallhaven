@@ -17,6 +17,7 @@ class HomeScreenSmall extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           HomeTranslations.explore.tr,
           textScaleFactor: textScaleFactor,
@@ -32,21 +33,30 @@ class HomeScreenSmall extends StatelessWidget {
                       message: _.errorMessage.value,
                       onRetry: _.fetchData,
                     )
-                  : Column(
-                      children: [
-                        Expanded(
-                          child: ListView.separated(
-                            itemCount: _.wallpapers.length,
-                            itemBuilder: (context, index) =>
-                                WallpaperItemWidget(
+                  : ListView.separated(
+                      shrinkWrap: true,
+                      controller: _.scrollController,
+                      itemCount: _.wallpapers.length,
+                      padding: EdgeInsets.symmetric(
+                        vertical: Get.width * 0.03,
+                      ),
+                      itemBuilder: (context, index) {
+                        final isLastItem = index == _.wallpapers.length - 1;
+
+                        return Column(
+                          children: [
+                            WallpaperItemWidget(
                               wallpaper: _.wallpapers[index],
                               thumbnailType: ThumbnailTypes.small,
                             ),
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(height: 1),
-                          ),
-                        ),
-                      ],
+                            LoadingMoreWidget(
+                              visible: _.isLoadingMore.value && isLastItem,
+                            ),
+                          ],
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: Get.width * 0.03),
                     );
         },
       ),

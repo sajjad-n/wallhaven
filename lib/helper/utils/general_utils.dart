@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as dev;
@@ -37,3 +38,6 @@ SnackbarController showSnackBar(String? message) {
   );
 }
 
+Future<bool> isConnectionAvailable() async {
+  return (await Connectivity().checkConnectivity()) != ConnectivityResult.none;
+}

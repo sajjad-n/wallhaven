@@ -32,10 +32,12 @@ class HomeController extends GetxController {
     scrollController.addListener(() async {
       final nextPageTrigger = 0.8 * scrollController.position.maxScrollExtent;
       final currentPosition = scrollController.position.pixels;
+      final isConnected = await isConnectionAvailable();
 
       if (currentPosition > nextPageTrigger &&
           !isLoadingMore.value &&
-          !_lastPage) {
+          !_lastPage &&
+          isConnected) {
         isLoadingMore.value = true;
 
         _currentPage++;

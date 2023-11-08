@@ -13,7 +13,7 @@ class SnackBarWidget extends StatelessWidget {
     return Container(
       width: Get.width,
       decoration: BoxDecoration(
-        color: Get.theme.colorScheme.primary,
+        color: Colors.red,
         borderRadius: BorderRadius.circular(Get.width * 0.02),
       ),
       child: Padding(
@@ -29,6 +29,7 @@ class SnackBarWidget extends StatelessWidget {
               child: Text(
                 message ?? '',
                 textScaleFactor: textScaleFactor,
+                style: Get.textTheme.titleMedium,
               ),
             ),
           ],
