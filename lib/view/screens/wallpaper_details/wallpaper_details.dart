@@ -1,0 +1,9 @@
+export 'wallpaper_details_screen.dart';
+export 'breakpoints/wallpaper_details_screen_large.dart';
+export 'breakpoints/wallpaper_details_screen_small.dart';
+export 'widgets/details_appbar_widget.dart';
+export 'widgets/original_image_widget.dart';
+export 'widgets/wallpaper_details_widget.dart';
+export 'widgets/details_header_widget.dart';
+export 'widgets/colors_widget.dart';
+export 'widgets/tags_widget.dart';

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../data/models/models.dart';
@@ -37,4 +38,12 @@ String generateDownloadUrlByType({
   } else {
     return wallpaper?.path ?? '';
   }
+}
+
+Future<String?> generateDownloadDirPath({String? fileName}) async {
+  final directory = GetPlatform.isAndroid
+      ? Directory(GeneralConst.downloadDirectory)
+      : await getTemporaryDirectory();
+
+  return fileName != null ? '${directory.path}/$fileName' : directory.path;
 }

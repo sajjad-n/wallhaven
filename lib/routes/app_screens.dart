@@ -16,6 +16,11 @@ abstract class AppScreens {
       page: () => const HomeScreen(),
       binding: HomeBinding(),
     ),
+    GetPage(
+      name: AppRoutes.wallpaperDetails,
+      page: () => const WallpaperDetailsScreen(),
+      binding: WallpaperDetailsBinding(),
+    ),
   ];
 
   static GetPage get getUnknownScreen => GetPage(

@@ -14,7 +14,7 @@ class LoadingMoreWidget extends StatelessWidget {
       visible: visible,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: Get.width * 0.04),
-        child: const LoadingWidget(),
+        child: LoadingWidget(),
       ),
     );
   }

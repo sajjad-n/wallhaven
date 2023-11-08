@@ -14,6 +14,7 @@ class AppTranslation extends Translations {
     enUS.addAll(UnknownTranslations.enUS);
     enUS.addAll(SplashTranslations.enUS);
     enUS.addAll(HomeTranslations.enUS);
+    enUS.addAll(WallpaperDetailsTranslations.enUS);
   }
 
   @override

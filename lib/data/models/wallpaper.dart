@@ -1,3 +1,5 @@
+import 'models.dart';
+
 class Wallpaper {
   String? id;
   String? url;
@@ -16,7 +18,7 @@ class Wallpaper {
   String? createdAt;
   List<String>? colors;
   String? path;
-  Thumbs? thumbs;
+  Thumbnail? thumbs;
 
   Wallpaper({
     this.id,
@@ -57,7 +59,7 @@ class Wallpaper {
     createdAt = json['created_at'];
     colors = json['colors'].cast<String>();
     path = json['path'];
-    thumbs = json['thumbs'] != null ? Thumbs.fromJson(json['thumbs']) : null;
+    thumbs = json['thumbs'] != null ? Thumbnail.fromJson(json['thumbs']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -82,28 +84,6 @@ class Wallpaper {
     if (thumbs != null) {
       data['thumbs'] = thumbs!.toJson();
     }
-    return data;
-  }
-}
-
-class Thumbs {
-  String? large;
-  String? original;
-  String? small;
-
-  Thumbs({this.large, this.original, this.small});
-
-  Thumbs.fromJson(Map<String, dynamic> json) {
-    large = json['large'];
-    original = json['original'];
-    small = json['small'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['large'] = large;
-    data['original'] = original;
-    data['small'] = small;
     return data;
   }
 }

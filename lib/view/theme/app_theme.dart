@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'theme.dart';
 
@@ -84,6 +85,34 @@ abstract class AppTheme {
       ),
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: Colors.white,
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all(
+            EdgeInsets.all(Get.width * 0.05),
+          ),
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: Colors.white.withOpacity(0.4),
+        space: 0.0,
+        indent: Get.width * 0.03,
+        endIndent: Get.width * 0.03,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return Colors.grey;
+              } else {
+                return AppColors.violetBlue;
+              }
+            },
+          ),
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
+          elevation: MaterialStateProperty.all(0.0),
+        ),
       ),
     );
   }

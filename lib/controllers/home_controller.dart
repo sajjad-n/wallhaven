@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../data/models/models.dart';
+import '../helper/constants/constants.dart';
 import '../helper/utils/utils.dart';
 import '../services/services.dart';
 
@@ -46,11 +47,11 @@ class HomeController extends GetxController {
           await _fetchWallpapers();
         } catch (e) {
           if (e is TimeoutException) {
-            showSnackBar(e.message);
+            showSnackBar(message: e.message, style: SnackBarStyles.error);
           } else if (e is SocketException) {
-            showSnackBar(e.message);
+            showSnackBar(message: e.message, style: SnackBarStyles.error);
           } else {
-            showSnackBar(e.toString());
+            showSnackBar(message: e.toString(), style: SnackBarStyles.error);
           }
         }
 

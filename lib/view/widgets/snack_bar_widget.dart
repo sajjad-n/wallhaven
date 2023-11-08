@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../helper/constants/constants.dart';
 import '../../helper/utils/utils.dart';
 
 class SnackBarWidget extends StatelessWidget {
   final String? message;
+  final SnackBarStyles? style;
 
-  const SnackBarWidget({super.key, required this.message});
+  const SnackBarWidget({
+    super.key,
+    required this.message,
+    this.style = SnackBarStyles.successful,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
       decoration: BoxDecoration(
-        color: Colors.red,
+        color: style == SnackBarStyles.successful ? Colors.green : Colors.red,
         borderRadius: BorderRadius.circular(Get.width * 0.02),
       ),
       child: Padding(

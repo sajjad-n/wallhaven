@@ -1,0 +1,1 @@
+export 'wallpaper_details_arguments.dart';

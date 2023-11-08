@@ -3,8 +3,7 @@ abstract class GeneralConst {
   static const double smallScreenMaxWidth = 800.0;
   static const Duration requestTimeOut = Duration(minutes: 1);
   static const Duration snackBarDuration = Duration(seconds: 4);
-  static const Duration listItemAnimDuration = Duration(milliseconds: 500);
-  static const Duration startAnimDelay = Duration(milliseconds: 100);
+  static const String downloadDirectory = '/storage/emulated/0/Download';
 }
 
 enum ThumbnailTypes {
@@ -16,3 +15,5 @@ enum ThumbnailTypes {
 
   final String path;
 }
+
+enum SnackBarStyles { successful, error }
