@@ -35,6 +35,6 @@ String generateDownloadUrlByType({
   } else if (thumbnailType == ThumbnailTypes.small) {
     return wallpaper?.thumbs?.small ?? '';
   } else {
-    return wallpaper?.thumbs?.original ?? '';
+    return wallpaper?.path ?? '';
   }
 }

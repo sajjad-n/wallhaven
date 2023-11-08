@@ -37,9 +37,7 @@ class HomeScreenSmall extends StatelessWidget {
                       shrinkWrap: true,
                       controller: _.scrollController,
                       itemCount: _.wallpapers.length,
-                      padding: EdgeInsets.symmetric(
-                        vertical: Get.width * 0.03,
-                      ),
+                      padding: EdgeInsets.all(Get.width * 0.03),
                       itemBuilder: (context, index) {
                         final isLastItem = index == _.wallpapers.length - 1;
 

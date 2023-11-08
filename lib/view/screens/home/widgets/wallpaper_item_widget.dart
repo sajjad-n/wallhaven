@@ -33,9 +33,7 @@ class _WallpaperItemWidgetState extends State<WallpaperItemWidget>
     super.initState();
 
     Future.delayed(GeneralConst.startAnimDelay, () {
-      setState(() {
-        _animate = true;
-      });
+      if (mounted) setState(() => _animate = true);
     });
   }
 
@@ -44,13 +42,8 @@ class _WallpaperItemWidgetState extends State<WallpaperItemWidget>
     return AnimatedOpacity(
       opacity: _animate ? 1.0 : 0.0,
       duration: GeneralConst.listItemAnimDuration,
-      child: AnimatedPadding(
-        padding: _animate
-            ? EdgeInsets.symmetric(horizontal: Get.width * 0.03)
-            : EdgeInsets.symmetric(
-                horizontal: Get.width * 0.03,
-                vertical: Get.width * 0.3,
-              ),
+      child: AnimatedSlide(
+        offset: _animate ? Offset.zero : const Offset(0.0, 2.0),
         duration: GeneralConst.listItemAnimDuration,
         child: Stack(
           children: [
