@@ -17,12 +17,12 @@ class HomeScreenLarge extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Get.width * 0.07,
+        toolbarHeight: Get.height * 0.1,
         centerTitle: true,
         title: Text(
           HomeTranslations.explore.tr,
           textScaleFactor: textScaleFactor,
-          style: Get.textTheme.titleSmall,
+          style: Get.textTheme.headlineSmall,
         ),
       ),
       body: GetX<HomeController>(
@@ -40,12 +40,13 @@ class HomeScreenLarge extends StatelessWidget {
                           child: GridView.builder(
                             controller: _.scrollController,
                             itemCount: _.wallpapers.length,
-                            padding: EdgeInsets.all(Get.width * 0.03),
+                            padding: EdgeInsets.all(Get.height * 0.03),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
-                              mainAxisSpacing: Get.width * 0.03,
-                              crossAxisSpacing: Get.width * 0.03,
+                              mainAxisExtent: Get.height * 0.25,
+                              mainAxisSpacing: Get.height * 0.03,
+                              crossAxisSpacing: Get.height * 0.03,
                             ),
                             itemBuilder: (context, index) {
                               return WallpaperItemWidget(

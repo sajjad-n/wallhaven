@@ -16,14 +16,22 @@ class WallpaperDetailsScreenSmall extends StatelessWidget {
 
     return Scaffold(
       body: GradiantBackgroundWidget(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: [
-            SizedBox(height: Get.width * 0.07),
-            DetailsAppbarWidget(),
-            OriginalImageWidget(wallpaper: args?.wallpaper),
-            SizedBox(height: Get.width * 0.03),
-            WallpaperDetailsWidget(wallpaper: args?.wallpaper),
+            Positioned(
+              child: OriginalImageWidget(wallpaper: args?.wallpaper),
+            ),
+            Positioned(
+              top: Get.height * 0.04,
+              left: Get.height * 0.01,
+              child: DetailsAppbarWidget(),
+            ),
+            Positioned(
+              bottom: Get.height * 0.01,
+              right: Get.height * 0.01,
+              left: Get.height * 0.01,
+              child: WallpaperDetailsWidget(wallpaper: args?.wallpaper),
+            ),
           ],
         ),
       ),

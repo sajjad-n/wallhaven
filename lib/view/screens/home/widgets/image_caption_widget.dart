@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,34 +15,37 @@ class ImageCaptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.width * 0.15,
-      padding: EdgeInsets.symmetric(horizontal: Get.width * 0.03),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.black, Colors.transparent],
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
+      padding: EdgeInsets.all( Get.height * 0.007),
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(Get.height * 0.02),
+          bottomLeft: Radius.circular(Get.height * 0.02),
         ),
+        color: Colors.black.withOpacity(0.1),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            HomeTranslations.likeCount.trParams({
-              'count': wallpaper?.favorites.toString() ?? '',
-            }),
-            textScaleFactor: textScaleFactor,
-            style: Get.textTheme.titleMedium,
-          ),
-          Text(
-            HomeTranslations.viewCount.trParams({
-              'count': wallpaper?.views.toString() ?? '',
-            }),
-            textScaleFactor: textScaleFactor,
-            style: Get.textTheme.bodyMedium,
-          ),
-        ],
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              HomeTranslations.likeCount.trParams({
+                'count': wallpaper?.favorites.toString() ?? '',
+              }),
+              textScaleFactor: textScaleFactor,
+              style: Get.textTheme.titleMedium,
+            ),
+            Text(
+              HomeTranslations.viewCount.trParams({
+                'count': wallpaper?.views.toString() ?? '',
+              }),
+              textScaleFactor: textScaleFactor,
+              style: Get.textTheme.bodyMedium,
+            ),
+          ],
+        ),
       ),
     );
   }

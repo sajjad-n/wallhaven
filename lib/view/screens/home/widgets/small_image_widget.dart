@@ -22,9 +22,9 @@ class SmallImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      height: Get.width * 0.45,
+      height: Get.height * 0.25,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Get.width * 0.03),
+        borderRadius: BorderRadius.circular(Get.height * 0.02),
       ),
       clipBehavior: Clip.antiAlias,
       child: GetPlatform.isWeb

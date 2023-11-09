@@ -13,25 +13,27 @@ class RequestErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(Get.width * 0.03),
+      padding: EdgeInsets.all(Get.height * 0.01),
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              message ?? '',
-              textScaleFactor: textScaleFactor,
-              textAlign: TextAlign.center,
-              style: Get.textTheme.bodyLarge,
-            ),
-            TextButton(
-              onPressed: onRetry,
-              child: Text(
-                GeneralTranslations.retry.tr,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                message ?? '',
                 textScaleFactor: textScaleFactor,
+                textAlign: TextAlign.center,
+                style: Get.textTheme.bodyLarge,
               ),
-            )
-          ],
+              TextButton(
+                onPressed: onRetry,
+                child: Text(
+                  GeneralTranslations.retry.tr,
+                  textScaleFactor: textScaleFactor,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

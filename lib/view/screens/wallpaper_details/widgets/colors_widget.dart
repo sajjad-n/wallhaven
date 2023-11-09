@@ -12,14 +12,14 @@ class ColorsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.width * 0.08,
+      height: Get.height * 0.04,
       child: ListView.separated(
         itemCount: colors?.length ?? 0,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Container(
-          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.03),
+          padding: EdgeInsets.symmetric(horizontal: Get.height * 0.01),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Get.width * 0.03),
+            borderRadius: BorderRadius.circular(Get.height * 0.015),
             color: colors![index].toColor,
           ),
           child: Center(
@@ -30,7 +30,7 @@ class ColorsWidget extends StatelessWidget {
             ),
           ),
         ),
-        separatorBuilder: (context, index) => SizedBox(width: Get.width * 0.03),
+        separatorBuilder: (context, index) => SizedBox(width: Get.height * 0.01),
       ),
     );
   }

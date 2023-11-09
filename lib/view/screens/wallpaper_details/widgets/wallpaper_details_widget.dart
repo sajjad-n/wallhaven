@@ -1,67 +1,75 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wallhaven/translations/translations.dart';
-import 'package:wallhaven/view/screens/wallpaper_details/widgets/download_button_widget.dart';
 
 import '../../../../controllers/controllers.dart';
 import '../../../../data/models/models.dart';
+import '../../../../translations/translations.dart';
 import '../../../widgets/widgets.dart';
 import '../wallpaper_details.dart';
 
 class WallpaperDetailsWidget extends StatelessWidget {
   final Wallpaper? wallpaper;
+  final bool smallScreen;
 
-  const WallpaperDetailsWidget({super.key, this.wallpaper});
+  const WallpaperDetailsWidget({
+    super.key,
+    this.wallpaper,
+    this.smallScreen = true,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width,
-      height: Get.width * 0.75,
-      padding: EdgeInsets.symmetric(
-        horizontal: Get.width * 0.03,
-        vertical: Get.width * 0.05,
-      ),
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Get.width * 0.07),
-        color: Colors.black,
-      ),
-      child: GetX<WallpaperController>(
-        initState: (_) => _.controller!.fetchWallpaperDetails(wallpaper?.id),
-        builder: (_) {
-          return _.isLoadingDetails.value
-              ? LoadingWidget()
-              : _.errorMessage.value != null
-                  ? RequestErrorWidget(
-                      message: _.errorMessage.value,
-                      onRetry: () => _.fetchWallpaperDetails(wallpaper?.id),
-                    )
-                  : SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          DetailsHeaderWidget(details: _.details),
-                          SizedBox(height: Get.width * 0.05),
-                          Divider(),
-                          SizedBox(height: Get.width * 0.03),
-                          ColorsWidget(colors: _.details?.colors),
-                          SizedBox(height: Get.width * 0.03),
-                          TagsWidget(tags: _.details?.tags),
-                          SizedBox(height: Get.width * 0.03),
-                          Divider(),
-                          SizedBox(height: Get.width * 0.03),
-                          DownloadButtonWidget(
-                            label: WallpaperDetailsTranslations.download.tr,
-                            progress: _.downloadProgress.value,
-                            onDownload: () =>
-                                _.saveWallpaper(_.details?.path),
-                            onCancel: _.cancelDownload,
-                          ),
-                        ],
+    return GetX<WallpaperController>(
+      initState: (_) => _.controller!.fetchWallpaperDetails(wallpaper?.id),
+      builder: (_) {
+        return AnimatedContainer(
+          width: smallScreen ? Get.width : Get.width * 0.3,
+          height:
+              _.isLoadingDetails.value ? Get.height * 0.07 : Get.height * 0.38,
+          duration: const Duration(milliseconds: 300),
+          padding: EdgeInsets.all(Get.height * 0.02),
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(Get.height * 0.05),
+            color: Colors.black.withOpacity(0.4),
+          ),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 30.0, sigmaY: 30.0),
+            child: _.isLoadingDetails.value
+                ? LoadingWidget()
+                : _.errorMessage.value != null
+                    ? RequestErrorWidget(
+                        message: _.errorMessage.value,
+                        onRetry: () => _.fetchWallpaperDetails(wallpaper?.id),
+                      )
+                    : SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            DetailsHeaderWidget(details: _.details),
+                            SizedBox(height: Get.height * 0.02),
+                            Divider(),
+                            SizedBox(height: Get.height * 0.02),
+                            ColorsWidget(colors: _.details?.colors),
+                            SizedBox(height: Get.height * 0.02),
+                            TagsWidget(tags: _.details?.tags),
+                            SizedBox(height: Get.height * 0.02),
+                            Divider(),
+                            SizedBox(height: Get.height * 0.02),
+                            DownloadButtonWidget(
+                              label: WallpaperDetailsTranslations.download.tr,
+                              progress: _.downloadProgress.value,
+                              onDownload: () =>
+                                  _.saveWallpaper(_.details?.path),
+                              onCancel: _.cancelDownload,
+                            ),
+                          ],
+                        ),
                       ),
-                    );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

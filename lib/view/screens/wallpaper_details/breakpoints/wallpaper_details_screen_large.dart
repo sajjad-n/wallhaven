@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../data/models/nav_args/nav_args.dart';
+import '../../../widgets/widgets.dart';
+import '../wallpaper_details.dart';
 
 class WallpaperDetailsScreenLarge extends StatelessWidget {
   final WallpaperDetailsArguments? args;
@@ -12,6 +14,29 @@ class WallpaperDetailsScreenLarge extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
 
-    return Scaffold();
+    return Scaffold(
+      body: GradiantBackgroundWidget(
+        child: Stack(
+          children: [
+            Positioned(
+              child: OriginalImageWidget(wallpaper: args?.wallpaper),
+            ),
+            Positioned(
+              top: Get.height * 0.04,
+              left: Get.height * 0.01,
+              child: DetailsAppbarWidget(),
+            ),
+            Positioned(
+              bottom: Get.height * 0.01,
+              right: Get.height * 0.01,
+              child: WallpaperDetailsWidget(
+                wallpaper: args?.wallpaper,
+                smallScreen: false,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

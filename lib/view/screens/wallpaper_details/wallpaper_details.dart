@@ -7,3 +7,4 @@ export 'widgets/wallpaper_details_widget.dart';
 export 'widgets/details_header_widget.dart';
 export 'widgets/colors_widget.dart';
 export 'widgets/tags_widget.dart';
+export 'widgets/download_button_widget.dart';

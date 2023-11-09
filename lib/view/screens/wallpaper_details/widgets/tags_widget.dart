@@ -14,23 +14,24 @@ class TagsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.width * 0.08,
+      height: Get.height * 0.04,
       child: ListView.separated(
         itemCount: tags?.length ?? 0,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Container(
-          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.03),
+          padding: EdgeInsets.symmetric(horizontal:  Get.height * 0.01),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Get.width * 0.03),
+            borderRadius: BorderRadius.circular(Get.height * 0.015),
             color: Colors.grey,
           ),
           child: Row(
             children: [
               SvgPicture.asset(
                 AssetsConst.tagRight,
-                width: Get.width * 0.05,
+                width: Get.height * 0.025,
                 color: Colors.white,
               ),
+              SizedBox(width: Get.height * 0.01),
               Text(
                 tags![index].category ?? '',
                 textScaleFactor: textScaleFactor,
@@ -39,7 +40,7 @@ class TagsWidget extends StatelessWidget {
             ],
           ),
         ),
-        separatorBuilder: (context, index) => SizedBox(width: Get.width * 0.03),
+        separatorBuilder: (context, index) => SizedBox(width: Get.height * 0.01),
       ),
     );
   }

@@ -22,16 +22,16 @@ class DownloadButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      width: progress == null ? Get.width : Get.width * 0.15,
-      height: Get.width * 0.15,
-      duration: const Duration(milliseconds: 500),
+      width: progress == null ? Get.width : Get.height * 0.08,
+      height: Get.height * 0.08,
+      duration: const Duration(milliseconds: 300),
       child: ElevatedButton(
         onPressed: progress == null ? onDownload : onCancel,
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                  progress == null ? Get.width * 1.0 : 360.0),
+                  progress == null ? Get.height * 1.0 : 360.0),
             ),
           ),
         ),
@@ -47,7 +47,7 @@ class DownloadButtonWidget extends StatelessWidget {
                   CircularProgressIndicator(
                     color: Colors.white,
                     value: progress,
-                    strokeWidth: Get.width * 0.008,
+                    strokeWidth: Get.height * 0.006,
                     backgroundColor: AppColors.violetBlue,
                   ),
                   Align(
@@ -55,7 +55,7 @@ class DownloadButtonWidget extends StatelessWidget {
                     child: SvgPicture.asset(
                       AssetsConst.rotatedAdd,
                       color: Colors.white,
-                      width: Get.width * 0.12,
+                      width: Get.height * 0.12,
                     ),
                   )
                 ],

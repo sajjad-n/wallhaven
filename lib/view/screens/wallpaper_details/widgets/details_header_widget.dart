@@ -25,9 +25,9 @@ class DetailsHeaderWidget extends StatelessWidget {
                   details?.uploader?.avatar?.s200px ?? '',
                 ),
                 backgroundColor: AppColors.violetBlue,
-                radius: Get.width * 0.07,
+                radius: Get.height * 0.035,
               ),
-              SizedBox(width: Get.width * 0.03),
+              SizedBox(width: Get.height * 0.01),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +55,7 @@ class DetailsHeaderWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: Get.width * 0.03),
+        SizedBox(width: Get.height * 0.01),
         Text(
           formatBytes(details?.fileSize ?? 0),
           textScaleFactor: textScaleFactor,

@@ -89,15 +89,15 @@ abstract class AppTheme {
       iconButtonTheme: IconButtonThemeData(
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
-            EdgeInsets.all(Get.width * 0.05),
+            EdgeInsets.all(Get.height * 0.02),
           ),
         ),
       ),
       dividerTheme: DividerThemeData(
         color: Colors.white.withOpacity(0.4),
         space: 0.0,
-        indent: Get.width * 0.03,
-        endIndent: Get.width * 0.03,
+        indent: Get.height * 0.02,
+        endIndent: Get.height * 0.02,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(

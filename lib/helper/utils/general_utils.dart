@@ -20,7 +20,7 @@ void printLog(dynamic params) {
   }
 }
 
-double get textScaleFactor => Get.width / GeneralConst.designWidth;
+double get textScaleFactor => Get.height / GeneralConst.designHeight;
 
 SnackbarController showSnackBar({String? message, SnackBarStyles? style}) {
   return Get.showSnackbar(
@@ -28,8 +28,8 @@ SnackbarController showSnackBar({String? message, SnackBarStyles? style}) {
       snackPosition: SnackPosition.TOP,
       padding: EdgeInsets.zero,
       margin: EdgeInsets.symmetric(
-        horizontal: Get.width * 0.02,
-        vertical: Get.width * 0.05,
+        horizontal: Get.height * 0.01,
+        vertical: Get.height * 0.05,
       ),
       dismissDirection: DismissDirection.up,
       backgroundColor: Colors.transparent,

@@ -21,9 +21,9 @@ class SplashScreenSmall extends StatelessWidget {
           children: [
             SvgPicture.asset(
               AssetsConst.logo,
-              width: Get.width * 0.3,
+              width: Get.height * 0.2,
             ),
-            SizedBox(height: Get.width * 0.03),
+            SizedBox(height: Get.height * 0.01),
             Text(
               SplashTranslations.appName.tr,
               textScaleFactor: textScaleFactor,
